@@ -166,6 +166,14 @@ class _InstagramCommonScraper(snscrape.base.Scraper):
 		r._snscrape_json_obj = obj
 		return True, None
 
+	@property
+	def headers(self):
+		return self._headers
+
+	@headers.setter
+	def headers(self, value):
+		self._headers = value
+
 	def get_items(self):
 		r = self._initial_page()
 		if r.status_code == 404:
