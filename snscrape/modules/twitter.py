@@ -806,9 +806,14 @@ class _TwitterAPIScraper(snscrape.base.Scraper):
 		self._guestTokenManager = guestTokenManager
 		self._maxEmptyPages = maxEmptyPages
 		self._apiHeaders = {
-			'Authorization': _API_AUTHORIZATION_HEADER,
+			# 'Authorization': _API_AUTHORIZATION_HEADER,
+			# 'Referer': self._baseUrl,
+			# 'Accept-Language': 'en-US,en;q=0.5',
+			'Authorization': os.getenv("SNSCRAPE_AUTHORIZATION_TOKEN"),
 			'Referer': self._baseUrl,
+			'Cookie': os.getenv("SNSCRAPE_COOKIE"),
 			'Accept-Language': 'en-US,en;q=0.5',
+			'x-csrf-token': os.getenv("SNSCRAPE_CSRF_TOKEN")
 		}
 		adapter = _TwitterTLSAdapter()
 		self._session.mount('https://twitter.com', adapter)
