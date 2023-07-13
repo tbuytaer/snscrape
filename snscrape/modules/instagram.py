@@ -107,7 +107,7 @@ class _InstagramCommonScraper(snscrape.base.Scraper):
 			medium = Photo(node['node']['thumbnail_src'], node['node']['display_url'])
 			if node['node']['is_video']:
 				variants = [
-					VideoVariant(url = node['node']['video_url'], width = node['node']['dimensions']['width'], height = node['node']['dimensions']['height'])
+					VideoVariant(url = '', width = node['node']['dimensions']['width'], height = node['node']['dimensions']['height'])
 				]
 				medium = Video(thumbnailUrl = node['node']['thumbnail_src'], variants = variants, duration = int(node['node']['video_duration']) if 'video_duration' in node['node'] else None, views = node['node']['video_view_count'])
 			yield InstagramPost(
